@@ -1,5 +1,5 @@
 {
-  "name": "webdev-example",
+  "name": "@webdev",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
@@ -10,6 +10,6 @@
     "typescript": "^5.0.0"
   },
   "workspaces": [
-    "server/*"
+    "packages/*"
   ]
 }
