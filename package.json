@@ -5,7 +5,8 @@
   "scripts": {
     "server:bun": "bun packages/server/index.ts",
     "server:bun-dev": "bun --watch packages/server/index.ts",
-    "admin:dev": "cd packages/admin && bun dev"
+    "admin:dev": "cd packages/admin && bun dev",
+    "server:build": "bun build --target=\"bun\" --sourcemap --outdir ./dist/server packages/server/index.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.2",
