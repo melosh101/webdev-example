@@ -16,6 +16,8 @@
 	"dependencies": {
 		"fastify": "^5.5.0",
 		"zod": "^4.1.5",
-		"@webdev/db": "workspace:*"
+		"@webdev/db": "workspace:*",
+    	"@fastify/cors": "^11.1.0"
+
 	}
 }
