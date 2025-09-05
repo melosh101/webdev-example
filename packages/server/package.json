@@ -1,6 +1,10 @@
 {
 	"name": "@webdev/server",
 	"module": "index.ts",
+	"scripts": {
+		"build": "bun build --target \"bun\" --outdir ./dist index.ts",
+		"start": "bun ./dist/index.js"
+	},
 	"devDependencies": {
 		"@types/bun": "latest"
 	},
