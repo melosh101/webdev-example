@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js" type="module" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <section class="btn-section">
+            <button class="rød">skift til rød</button>
+            <button class="pink">skift til pink</button>
+            <button class="grøn">skift til grøn</button>
+            <button id="pick-color-button">
+                <span class="contrast-color">Vælg farve</span>
+            </button>
+            <input type="color" name="selected-color" id="selected-color" value="#7a4fa1">
+        </section>
+        <section>
+            <button popovertarget="opret-hilsen" id="open-popup">Skriv en hilsen</button>
+        </section>
+    </main>
+
+    <dialog popover="auto" id="opret-hilsen">
+        <h2>Send en hilsen</h2>
+        <form action="" id="hilsen-formular">
+            <div class="form-group">
+                <label for="navn" >Navn:</label>
+                <input type="text" autocomplete="given-name" name="name" id="navn" minlength="2" required>
+            </div>
+            <div class="form-group">
+                <label for="hilsen" autocorrect="off">Hilsen:</label>
+                <textarea type="text" name="message" id="hilsen" minlength="20" required></textarea>
+            </div>
+            <div class="form-control form-group">
+                <button type="button" popovertargetaction="hide" popovertarget="opret-hilsen">cancel</button>
+                <button>submit</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+
+</html>
