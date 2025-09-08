@@ -6,5 +6,5 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 export function forceLogin(callbackUrl = "/") {
-	redirect(`/auth/force-login?callbackUrl=${encodeURIComponent(callbackUrl)}`);
+	redirect(`/admin/auth/force-login?callbackUrl=${encodeURIComponent(callbackUrl)}`);
 }
