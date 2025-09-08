@@ -1,5 +1,5 @@
 import {defineConfig} from "drizzle-kit";
-import env from "./packages/db/env";
+import env from "./env";
 
 
 // define config for drizzle kit

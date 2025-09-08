@@ -7,16 +7,13 @@
     "server:bun-dev": "bun --watch packages/server/index.ts",
     "admin:dev": "cd packages/admin && bun dev",
     "server:build": "bun run --filter @webdev/server build",
-    "server:start": "bun run db:migrate && bun run --filter @webdev/server start",
+    "server:start": "bun run --filter @webdev/server start",
     "server:start-bun": "bun ./packages/server/index.ts",
     "db:migrate": "bunx drizzle-kit migrate",
     "db:generate": "bunx drizzle-kit generate",
     "lint": "biome check .",
     "lint:fix": "biome format . --write",
     "lint:unsafe": "biome format . --write --unsafe"
-  },
-  "dependencies": {
-    "drizzle-kit": "^0.31.4"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.2",
