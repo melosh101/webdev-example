@@ -13,6 +13,7 @@ export const ChangeStateButton = (props: Props) => {
 	 return (
 		 <Button
 			 className="capitalize"
+             variant={"ghost"}
 			 onClick={() => {
 				 if (props.onChange) {
 					 props.onChange(props.id, props.state);
