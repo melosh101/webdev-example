@@ -2,8 +2,8 @@
 	"name": "@webdev/server",
 	"module": "index.ts",
 	"scripts": {
-		"build": "bun build --target \"bun\" --outdir ./dist index.ts",
-		"start": "bun ./dist/index.js",
+		"build": "bun build --target \"node\" --outdir ./dist index.ts",
+		"start": "fastify start -l info -w dist/index.js",
 		"start:bun": "bun index.ts"
 	},
 	"devDependencies": {
@@ -14,10 +14,11 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"fastify": "^5.5.0",
-		"zod": "^4.1.5",
+		"@fastify/cors": "^11.1.0",
 		"@webdev/db": "workspace:*",
-    	"@fastify/cors": "^11.1.0"
-
+		"@webdev/server": "workspace:*",
+		"fastify": "^5.5.0",
+		"fastify-cli": "^7.4.0",
+		"zod": "^4.1.5"
 	}
 }
