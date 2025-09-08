@@ -13,7 +13,9 @@
     "db:generate": "bunx drizzle-kit generate",
     "lint": "biome check .",
     "lint:fix": "biome format . --write",
-    "lint:unsafe": "biome format . --write --unsafe"
+    "lint:unsafe": "biome format . --write --unsafe",
+    "admin:build": "bun run --filter @webdev/admin build",
+    "admin:start": "bun run --filter @webdev/admin start"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.2",
