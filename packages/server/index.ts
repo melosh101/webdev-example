@@ -11,8 +11,7 @@ const fastify = Fastify({
 
 if(env.NODE_ENV !== "production") {
 	await fastify.register(cors, {
-		origin: ["http://localhost:5500"],
-		methods: ["GET", "POST"],
+		origin: ["*"],
 	});
 }
 
