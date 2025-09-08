@@ -8,7 +8,8 @@ import { desc } from "drizzle-orm";
 export default async function Home() {
   const session = await auth();
   if(!session) {
-    return forceLogin("/")
+    forceLogin("/")
+    return <div>Redirecting to login...</div>
   }
   const hilsner = await db.select({
     id: hilsnerTable.id,
