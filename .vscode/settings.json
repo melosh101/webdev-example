@@ -1,0 +1,6 @@
+{
+    "fiveServer.ignore": [
+        "**/node_modules/**",
+        "**/packages/**"
+    ]
+}
