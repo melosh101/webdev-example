@@ -8,8 +8,8 @@ export const hilsnerTable = pgTable("hilsner", {
     message: text("message").notNull(),
     status: text("status").notNull().default("pending").$type<"pending" | "approved" | "rejected">(),
 
-    createdAt: timestamp("created_at").notNull().defaultNow(),
-    updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() =>sql `now()`)
+    createdAt: timestamp("created_at", {mode: "string"}).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", {mode: "string"}).notNull().$onUpdateFn(() =>sql `now()`)
 })
 
 
