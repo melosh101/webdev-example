@@ -1,6 +1,5 @@
 import { db } from "@webdev/db";
-import env from "@webdev/db/env";
-import Fastify, { type FastifyPluginAsync } from "fastify";
+import type { FastifyPluginAsync } from "fastify";
 import { hilsnerTable } from "@webdev/db/schema";
 import z from "zod";
 import cors from "@fastify/cors";

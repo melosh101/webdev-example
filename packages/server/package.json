@@ -4,7 +4,6 @@
 	"scripts": {
 		"build": "bun build --target \"node\" --outdir ./dist index.ts",
 		"start": "fastify start -l info -w dist/index.js",
-		"prestart": "bun run --filter @webdev/db migrate",
 		"start:bun": "bun index.ts"
 	},
 	"devDependencies": {
