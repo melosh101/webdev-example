@@ -9,7 +9,6 @@ const apiBaseUrl = window.location.hostname === 'localhost' ? 'http://localhost:
 
 export function gemHilsen(name, message) {
     console.log("gemmer hilsen")
-    var response;
     
     fetch(`${apiBaseUrl}/hilsen`, {
         method: 'POST',

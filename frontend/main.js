@@ -1,4 +1,4 @@
-import { gemHilsen } from "./api.js";
+import { gemHilsen } from "./backend.js";
 
 const buttonSection = document.querySelector('main');
 const colorSelector = document.querySelector('#selected-color');
