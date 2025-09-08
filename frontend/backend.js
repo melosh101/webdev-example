@@ -4,12 +4,12 @@
 * I kan selv vælge om i vil men disse dele vil ikke være lige så læselige som dem i main.js
 */
 
-const apiBaseUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '/api';
+const apiBaseUrl = (window.location.hostname === 'localhost' || window.location.hostname === "127.0.0.1" )? 'http://localhost:3000' : '/api';
 
 
 export function gemHilsen(name, message) {
     console.log("gemmer hilsen")
-    
+    let res;
     fetch(`${apiBaseUrl}/hilsen`, {
         method: 'POST',
         headers: {
@@ -31,7 +31,7 @@ export function gemHilsen(name, message) {
             };
             return;
         }
-        response = {
+        res = {
             success: true,
             response: data
         }
