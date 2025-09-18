@@ -72,7 +72,7 @@ const pusher = new Pusher("webdev-example", {
 
 
 pusher.subscribe("hilsner").bind("message", (data) => {
-    if(data.status === "rejcted" || data.status === "pending") {
+    if(data.status === "rejected" || data.status === "pending") {
         return window.removeHilsen(data.id);
     }
 
