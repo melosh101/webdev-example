@@ -53,6 +53,12 @@ dialog.addEventListener("beforetoggle", () => {
 window.updateHilsner = (newHilsner) => {
     console.log("updater hilsner")
     window.hilsner = newHilsner;
+    const list = document.querySelector("#hilsner-list");
+    list.innerHTML = "";
+    window.hilsner.forEach(hilsen => {
+        const item = document.createElement("li");
+        window.addHilsen(hilsen);
+    });
 };
 
 window.addHilsen = (hilsen) => {
