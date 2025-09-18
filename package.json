@@ -1,33 +1,36 @@
 {
-  "name": "webdev",
-  "module": "index.ts",
-  "type": "module",
-  "scripts": {
-    "server:bun": "bun packages/server/index.ts",
-    "server:bun-dev": "bun --watch packages/server/index.ts",
-    "admin:dev": "cd packages/admin && bun dev",
-    "server:build": "bun run --filter @webdev/server build",
-    "server:start": "bun run --filter @webdev/server start",
-    "server:start-bun": "bun ./packages/server/index.ts",
-    "db:migrate": "bunx drizzle-kit migrate",
-    "db:generate": "bunx drizzle-kit generate",
-    "lint": "biome check .",
-    "lint:fix": "biome format . --write",
-    "lint:unsafe": "biome format . --write --unsafe",
-    "admin:build": "bun run --filter @webdev/admin build",
-    "admin:start": "bun run --filter @webdev/admin start"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.2.2",
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
-  "dependencies": {
-    "drizzle-orm": "^0.44.5"
-  }
+	"name": "webdev",
+	"module": "index.ts",
+	"type": "module",
+	"engines": {
+		"node": "22"
+	},
+	"scripts": {
+		"server:bun": "bun packages/server/index.ts",
+		"server:bun-dev": "bun --watch packages/server/index.ts",
+		"admin:dev": "cd packages/admin && bun dev",
+		"server:build": "bun run --filter @webdev/server build",
+		"server:start": "bun run --filter @webdev/server start",
+		"server:start-bun": "bun ./packages/server/index.ts",
+		"db:migrate": "bunx drizzle-kit migrate",
+		"db:generate": "bunx drizzle-kit generate",
+		"lint": "biome check .",
+		"lint:fix": "biome format . --write",
+		"lint:unsafe": "biome format . --write --unsafe",
+		"admin:build": "bun run --filter @webdev/admin build",
+		"admin:start": "bun run --filter @webdev/admin start"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.2.2",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"workspaces": [
+		"packages/*"
+	],
+	"dependencies": {
+		"drizzle-orm": "^0.44.5"
+	}
 }
