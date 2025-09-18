@@ -107,7 +107,7 @@ main {
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(4, 1fr);
-    transform: translateY(-20vh);
+    transform: translateY(-40vh);
     & li {
         padding: 5px;
         border: solid black 2px;
