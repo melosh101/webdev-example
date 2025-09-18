@@ -10,6 +10,7 @@ const pusherUrl = (window.location.hostname === 'localhost' || window.location.h
 
 export function gemHilsen(name, message) {
     console.log("gemmer hilsen")
+    let res;
     fetch(`${apiBaseUrl}/hilsen`, {
         method: 'POST',
         headers: {
@@ -29,6 +30,7 @@ export function gemHilsen(name, message) {
                 success: false,
                 errors: data.properties
             };
+            console.log(data.errors)
             return;
         }
         res = {
