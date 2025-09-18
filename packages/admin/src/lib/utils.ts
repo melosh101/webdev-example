@@ -1,10 +1,10 @@
-import { clsx, type ClassValue } from "clsx"
+import { type ClassValue, clsx } from "clsx";
 import { redirect } from "next/navigation";
-import { twMerge } from "tailwind-merge"
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 export function forceLogin(callbackUrl = "/") {
-	redirect(`/force-login?callbackUrl=${encodeURIComponent(callbackUrl)}`);
+  redirect(`/force-login?callbackUrl=${encodeURIComponent(callbackUrl)}`);
 }

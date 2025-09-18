@@ -1,8 +1,14 @@
 /** biome-ignore-all lint/style/noNonNullAssertion: we depend on magic here */
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import type { DefaultSession, NextAuthConfig } from "next-auth";
 import { db } from "@webdev/db";
-import { accounts, authenticators, sessions, users, verificationTokens } from "@webdev/db/schema";
+import {
+  accounts,
+  authenticators,
+  sessions,
+  users,
+  verificationTokens,
+} from "@webdev/db/schema";
+import type { DefaultSession, NextAuthConfig } from "next-auth";
 import KeycloakProvider from "next-auth/providers/keycloak";
 
 /**
@@ -12,28 +18,28 @@ import KeycloakProvider from "next-auth/providers/keycloak";
  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
  */
 declare module "next-auth" {
-	interface Session extends DefaultSession {
-		user: {
-			id: string;
-			// ...other properties
-			// role: UserRole;
-		} & DefaultSession["user"];
-	}
+  interface Session extends DefaultSession {
+    user: {
+      id: string;
+      // ...other properties
+      // role: UserRole;
+    } & DefaultSession["user"];
+  }
 }
 
 export const authConfig = {
-    adapter: DrizzleAdapter(db, {
-        sessionsTable: sessions,
-        accountsTable: accounts,
-        usersTable: users,
-        authenticatorsTable: authenticators,
-        verificationTokensTable: verificationTokens,
+  adapter: DrizzleAdapter(db, {
+    sessionsTable: sessions,
+    accountsTable: accounts,
+    usersTable: users,
+    authenticatorsTable: authenticators,
+    verificationTokensTable: verificationTokens,
+  }),
+  providers: [
+    KeycloakProvider({
+      clientId: process.env.KEYCLOAK_ID!,
+      clientSecret: process.env.KEYCLOAK_SECRET!,
+      issuer: process.env.KEYCLOAK_ISSUER!,
     }),
-    providers: [
-        KeycloakProvider({
-            clientId: process.env.KEYCLOAK_ID!,
-            clientSecret: process.env.KEYCLOAK_SECRET!,
-            issuer: process.env.KEYCLOAK_ISSUER!,
-        })
-    ]
+  ],
 } satisfies NextAuthConfig;

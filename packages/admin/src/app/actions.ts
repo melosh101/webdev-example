@@ -7,17 +7,17 @@ import { eq } from "drizzle-orm";
 import pusher from "../server/pusher";
 
 export async function updateState(
-	state: "pending" | "approved" | "rejected",
-	id: number,
+  state: "pending" | "approved" | "rejected",
+  id: number,
 ) {
+  console.log("Updating state", state, id);
+  const res = await db
+    .update(hilsnerTable)
+    .set({ status: state })
+    .where(eq(hilsnerTable.id, id))
+    .returning();
 
-    console.log("Updating state", state, id);
-	const res = await db
-		.update(hilsnerTable)
-		.set({ status: state })
-		.where(eq(hilsnerTable.id, id)).returning();
-
-	const didPush = await pusher.trigger("hilsner", "message", res[0]);
-	console.log("Pusher result", didPush.ok);
-	return res[0];
+  const didPush = await pusher.trigger("hilsner", "message", res[0]);
+  console.log("Pusher result", didPush.ok);
+  return res[0];
 }

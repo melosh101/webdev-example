@@ -1,6 +1,3 @@
 {
-    "fiveServer.ignore": [
-        "**/node_modules/**",
-        "**/packages/**"
-    ]
+	"fiveServer.ignore": ["**/node_modules/**", "**/packages/**"]
 }

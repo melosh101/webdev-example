@@ -3,7 +3,12 @@ import z from "zod";
 // define environment variables schema to make sure all required variables are present
 const envSchema = z.object({
 	DATABASE_URL: z.url(),
-	PORT: z.string().min(2).max(4).regex(/^\d+$/, "must be a number").default("3000"),
+	PORT: z
+		.string()
+		.min(2)
+		.max(4)
+		.regex(/^\d+$/, "must be a number")
+		.default("3000"),
 	NODE_ENV: z.enum(["development", "production"]).default("development"),
 });
 

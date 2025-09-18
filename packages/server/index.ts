@@ -10,16 +10,17 @@ const insertHilsen = z.object({
 	message: z.string().min(30).max(500),
 });
 
-const app: FastifyPluginAsync<{}> = async (fastify, opts): Promise<void> => {
+const app: FastifyPluginAsync = async (fastify, _opts): Promise<void> => {
 	// place here any custom plugins or routes
 	await fastify.register(cors, {
 		origin: ["*"],
 	});
 
 	fastify.get("/hilsen", async (_request, reply) => {
-		const hilsner = await db.select().from(hilsnerTable).where(
-			eq(hilsnerTable.status, "approved"),
-		);
+		const hilsner = await db
+			.select()
+			.from(hilsnerTable)
+			.where(eq(hilsnerTable.status, "approved"));
 		reply.send(hilsner);
 	});
 
