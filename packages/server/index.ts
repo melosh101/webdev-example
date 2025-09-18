@@ -3,6 +3,7 @@ import type { FastifyPluginAsync } from "fastify";
 import { hilsnerTable } from "@webdev/db/schema";
 import z from "zod";
 import cors from "@fastify/cors";
+import { eq } from "drizzle-orm";
 
 const insertHilsen = z.object({
 	name: z.string().min(2).max(100),
@@ -16,7 +17,9 @@ const app: FastifyPluginAsync<{}> = async (fastify, opts): Promise<void> => {
 	});
 
 	fastify.get("/hilsen", async (_request, reply) => {
-		const hilsner = await db.select().from(hilsnerTable);
+		const hilsner = await db.select().from(hilsnerTable).where(
+			eq(hilsnerTable.status, "approved"),
+		);
 		reply.send(hilsner);
 	});
 

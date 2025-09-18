@@ -44,14 +44,14 @@ export function gemHilsen(name, message) {
     });
 }
 
-export function hentHilsner(setHilsner) {
+export function hentHilsner() {
     fetch(`${apiBaseUrl}/hilsen`)
     .then(response => {
         return response.json();
     })
     .then(data => {
         console.log('Success:', data);
-        setHilsner(data);
+        window.updateHilsner(data);
     })
     .catch((error) => {
         console.error('Error:', error);
@@ -72,6 +72,9 @@ const pusher = new Pusher("webdev-example", {
 
 
 pusher.subscribe("hilsner").bind("message", (data) => {
-    console.log(data)
-    alert(data.content);
+    if(data.status === "rejcted" || data.status === "pending") {
+        return window.removeHilsen(data.id);
+    }
+
+    return window.addHilsen(data)
 });

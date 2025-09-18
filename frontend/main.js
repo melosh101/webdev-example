@@ -1,10 +1,12 @@
-import { gemHilsen } from "./backend.js";
+import { gemHilsen, hentHilsner } from "./backend.js";
 
 const buttonSection = document.querySelector('main');
 const colorSelector = document.querySelector('#selected-color');
 const pickColorButton = document.querySelector("#pick-color-button")
 const formular = document.querySelector("#hilsen-formular")
 const dialog = document.querySelector("dialog");
+
+window.hilsner = [];
 
 function skiftRød() {
     console.log("skifter farve til rød")
@@ -47,3 +49,35 @@ formular.addEventListener('submit', (event) => {
 dialog.addEventListener("beforetoggle", () => {
     formular.reset();
 });
+
+window.updateHilsner = (newHilsner) => {
+    console.log("updater hilsner")
+    window.hilsner = newHilsner;
+};
+
+window.addHilsen = (hilsen) => {
+    console.log("tilføjer hilsen")
+    window.hilsner.push(hilsen);
+    const list = document.querySelector("#hilsner-list");
+    const item = document.createElement("li");
+    const name = document.createElement("h2");
+    const message = document.createElement("p");
+    name.textContent = hilsen.name;
+    message.textContent = hilsen.message;
+    item.appendChild(name);
+    item.appendChild(message);
+    item.id = `hilsen-${hilsen.id}`;
+    list.appendChild(item);
+};
+
+window.removeHilsen = (id) => {
+    console.log("fjerner hilsen")
+    window.hilsner = window.hilsner.filter(hilsen => hilsen.id !== id);
+    const item = document.querySelector(`#hilsen-${id}`);
+    if(item) {
+        item.remove();
+    }
+}
+
+hentHilsner();
+
