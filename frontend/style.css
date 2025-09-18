@@ -108,8 +108,8 @@ main {
     gap: 2rem;
     grid-template-columns: repeat(4, 1fr);
     transform: translateY(-20vh);
-    padding: 5px;
     & li {
+        padding: 5px;
         border: solid black 2px;
         border-radius: 5px;
         display: flex;
