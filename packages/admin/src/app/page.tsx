@@ -1,9 +1,9 @@
 import { forceLogin } from "@/lib/utils";
 import { auth } from "@/server/auth";
 import { db } from "@webdev/db";
-import { hilsnerTable } from "@webdev/db/schema";
+import { accounts, hilsnerTable } from "@webdev/db/schema";
 import ClientHilsnerList from "./ClientHilsnerList";
-import { desc } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 
 export default async function Home() {
   const session = await auth();
@@ -11,6 +11,8 @@ export default async function Home() {
     forceLogin("/")
     return <div>Redirecting to login...</div>
   }
+
+
   const hilsner = await db.select({
     id: hilsnerTable.id,
     name: hilsnerTable.name,
@@ -18,6 +20,9 @@ export default async function Home() {
     status: hilsnerTable.status,
   }).from(hilsnerTable)
   .orderBy(desc(hilsnerTable.createdAt));
+
+  "SELECT * FROM hilsnerTable ORDER BY createdAt DESC"
+
   return (
     <div className="flex min-h-screen flex-col just items-center p-24">
       Logged in as {session.user?.name}
