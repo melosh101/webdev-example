@@ -107,7 +107,7 @@ main {
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(1fr, 4);
-
+    transform: translateY(-20vh);
     & li {
         display: flex;
         flex-direction: column;
