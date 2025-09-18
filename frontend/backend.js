@@ -5,11 +5,11 @@
 */
 
 const apiBaseUrl = (window.location.hostname === 'localhost' || window.location.hostname === "127.0.0.1" )? 'http://localhost:3000' : '/api';
+const pusherUrl = (window.location.hostname === 'localhost' || window.location.hostname === "127.0.0.1" )? "soketi-uowkcw8w0oscgo8gkk4ck808.milasholsting.dk": "/socket"
 
 
 export function gemHilsen(name, message) {
     console.log("gemmer hilsen")
-    let res;
     fetch(`${apiBaseUrl}/hilsen`, {
         method: 'POST',
         headers: {
@@ -41,3 +41,34 @@ export function gemHilsen(name, message) {
         alert('Der skete en fejl under gemning af hilsen');
     });
 }
+
+export function hentHilsner(setHilsner) {
+    fetch(`${apiBaseUrl}/hilsen`)
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+        setHilsner(data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('Der skete en fejl under hentning af hilsner');
+    });
+}
+
+const pusher = new Pusher("webdev-example", {
+    wsHost: pusherUrl,
+    wsPort: 80,
+    forceTLS: true,
+    encrypted: false,
+    disableStats: true,
+    enabledTransports: ['ws', 'wss']
+});
+
+
+
+pusher.subscribe("hilsner").bind("message", (data) => {
+    console.log(data)
+    alert(data.content);
+});
