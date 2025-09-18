@@ -5,7 +5,7 @@
 */
 
 const apiBaseUrl = (window.location.hostname === 'localhost' || window.location.hostname === "127.0.0.1" )? 'http://localhost:3000' : '/api';
-const pusherUrl = (window.location.hostname === 'localhost' || window.location.hostname === "127.0.0.1" )? "soketi-uowkcw8w0oscgo8gkk4ck808.milasholsting.dk": "webdev.milasholsting.dk/socket"
+const pusherUrl = (window.location.hostname === 'localhost' || window.location.hostname === "127.0.0.1" )? "soketi-uowkcw8w0oscgo8gkk4ck808.milasholsting.dk": "webdev.milasholsting.dk"
 
 
 export function gemHilsen(name, message) {
@@ -63,7 +63,8 @@ const pusher = new Pusher("webdev-example", {
     forceTLS: true,
     encrypted: false,
     disableStats: true,
-    enabledTransports: ['ws', 'wss']
+    enabledTransports: ['ws', 'wss'],
+    wsPath: "/socket"
 });
 
 
